@@ -1,0 +1,29 @@
+#include<opencv2/opencv.hpp>
+
+using namespace cv;
+
+int main()
+{
+	Mat img, gray;
+
+	img = imread("../images/humming_bird.jpg");//read image
+	// cvtColor(img, gray, CV_BGR2GRAY);
+	putText(img, "Hello, bird!", Point(140, 50), FONT_HERSHEY_SIMPLEX, 1,
+		//print out "Hello, bird!" to the corresponding coordinate location
+		Scalar(80, 200, 130), 2, LINE_AA, false); 
+	    //Apply corresponding RGB color
+	 
+	rectangle(img, Rect(50, 25, 350, 30),
+		//print out Rectangle to the corresponding coordinate location
+		Scalar(255, 30, 200));
+	    //Apply corresponding RGB color
+	// Rect()  (50, 25) is top-left coordinates and (350, 30) is width and height respectively. 
+	
+
+	namedWindow("Hello"); 
+	imshow("Hello", img);
+	// imwrite("h.jpg", img);
+	waitKey();
+
+	return 0;
+}
