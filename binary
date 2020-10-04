@@ -10,7 +10,7 @@ int main()
 	Mat blend = image1 * k + (1 - k) * image2;
 
 	imshow("image2", image2);
-	Mat gray, binary, otau;
+	Mat gray, binary, otsu;
 	cvtColor(image2, gray, COLOR_BGR2GRAY);
 	threshold(gray, binary, 128, 255, THRESH_BINARY);
 
