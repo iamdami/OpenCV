@@ -7,7 +7,7 @@ int main()
 {
 Mat image2 = imread("../images/hillary_clinton.jpg");
 
-Mat gray, binary, otau;
+Mat gray;
 cvtColor(image2, gray, COLOR_BGR2GRAY);
 
 imshow("gray", gray);
