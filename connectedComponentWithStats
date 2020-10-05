@@ -26,8 +26,8 @@ int main()
 	int cnt2 = connectedComponentsWithStats(src, label2, stats, centroids);
 	cout << "\n \n" << endl;
 	cout << "labels:\n" << label2 << endl;
-	cout << "stats: " << stats << endl;
-	cout << "centroids: " << centroids << endl;
+	cout << "stats:\n " << stats << endl;
+	cout << "centroids:\n " << centroids << endl;
 	cout << "number of labels: " << cnt1 << endl; //배경까지 포함한 개수(여기선 0,1,2,3의 4개)
 
 	return 0;
