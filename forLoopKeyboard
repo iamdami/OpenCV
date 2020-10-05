@@ -1,0 +1,49 @@
+#include <opencv2/opencv.hpp>
+using namespace std;
+using namespace cv;
+
+int main()
+{/*
+	Mat image = imread("../images/lena.jpg", IMREAD_GRAYSCALE);
+	CV_Assert(image.data);
+
+	Mat dst(image.size(), image.type());
+
+	dst = image + 100;
+
+	Mat img = image.clone();
+	Rect rt(100, 100, 80, 50);
+	Mat roi = img(rt);
+
+	for (int i = 0; i < roi.rows; i++) {
+		for (int j = 0; j < roi.cols; j++) {
+			roi.at<uchar>(i, j) = 255 - roi.at<uchar>(i, j);
+		}
+	}*/
+
+	Mat src1 = imread("../images/keyboard.bmp", IMREAD_GRAYSCALE);
+	if (src1.empty()) {
+		cerr << "Image Load Failed" << endl;
+		return -1;
+	}
+
+	imshow("src1", src1);
+	Mat bin;
+	threshold(src1, bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+	Mat labels, stats1, centroids1;
+	int cnt = connectedComponentsWithStats(bin, labels, stats1, centroids1);
+	Mat dst;
+	cvtColor(src1, dst, COLOR_GRAY2BGR);
+
+	for (int i = 1; i < cnt; i++) {
+		int *p = stats1.ptr<int>(i);
+		if (p[4] < 20) continue;
+//		if (*(p + 4) < 20) continue;
+		rectangle(dst, Rect(p[0], p[1], p[2], p[3]), Scalar(0, 0, 255), 2);
+	}
+
+	imshow("dst", dst);
+
+	waitKey();
+	return 0;
+}
