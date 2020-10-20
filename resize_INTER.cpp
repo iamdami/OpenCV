@@ -17,7 +17,7 @@ int main()
 	//roi를 해당 사이즈로 변환
 
 
-	imshow("down", o1);
+	imshow("Inter_Nearest", o1);
 
 
 	waitKey();
